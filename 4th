@@ -10,6 +10,12 @@ function draw(){
 
     let gravity = createVector(0, 0.1);
     leaf.applyForce(gravity);
+
+    if(mouseIsPressed){
+        let wind = createVector(-0.1 , 1);
+        leaf.applyForce(wind);
+    }
+    
     leaf.checkEdges();
     leaf.update();
     leaf.show();
@@ -37,6 +43,13 @@ class Mover{
         }else if(this.pos.x < 10){
             this.pos.x = 10;
             this.vel.x *= -1;
+        }
+        if(this.pos.y > height - 10){
+            this.pos.y = height - 10;
+            this.vel.y *= -1;
+        }else if(this.pos.y < 10){
+            this.pos.y = 10;
+            this.vel.y *= -1;
         }
     }
 }
