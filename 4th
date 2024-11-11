@@ -1,9 +1,21 @@
-let moverA = new Mover();
-let moverB = new Mover();
+function draw() {
+  background(255);
 
-constructor(x, y, mass){
-    this.mass = mass;
-    this.pos = createVector(x, y);
-    this.vel = createVector(0, 0);
-    this.acc = createVector(0, 0);
+  let gravity = createVector(0, 0.1);
+  moverA.applyForce(gravity);
+  moverB.applyForce(gravity);
+
+  if (mouseIsPressed) {
+    let wind = createVector(0.1, 0);
+    moverA.applyForce(wind);
+    moverB.applyForce(wind);
+  }
+
+  moverA.checkEdges();
+  moverA.update();
+  moverA.show();
+
+  moverB.checkEdges();
+  moverB.update();
+  moverB.show();
 }
