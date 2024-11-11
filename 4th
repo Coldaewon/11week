@@ -7,6 +7,10 @@ function setup(){
 
 function draw(){
     background(255);
+
+    let gravity = createVector(0, 0.1);
+    leaf.applyForce(gravity);
+    leaf.update();
     leaf.show();
 }
 
@@ -15,6 +19,10 @@ class Mover{
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
+    }
+
+    applyForce(force){
+        this.acc.add(force);
     }
 }
 
