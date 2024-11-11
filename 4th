@@ -10,6 +10,7 @@ function draw(){
 
     let gravity = createVector(0, 0.1);
     leaf.applyForce(gravity);
+    leaf.checkEdges();
     leaf.update();
     leaf.show();
 }
@@ -23,11 +24,20 @@ class Mover{
     applyForce(force){
         this.acc.add(force);
     }
-
     update(){
         this.vel.add(this.acc);
         this.pos.add(this.vel);
         this.acc.mult(0);
+    }
+
+    checkEdges(){
+        if(this.pos.x > width - 10){
+            this.pos.x = width - 10;
+            this.vel.x *= -1;
+        }else if(this.pos.x < 10){
+            this.pos.x = 10;
+            this.vel.x *= -1;
+        }
     }
 }
 
