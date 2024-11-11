@@ -1,27 +1,41 @@
-class Mover { 
-    constructor(){
-        this.pos = createVector();
-        this.vel = createVector();
-        this.acc = createVector();
+class Mover {
+  constructor() {
+   
+    this.mass = 1;
+    this.position = createVector(width / 2, 30);
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
+  }
+  applyForce(force) {
+    let f = p5.Vector.div(force, this.mass);
+    this.acceleration.add(f);
+  }
+
+  update() {
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
+  }
+
+  show() {
+    stroke(0);
+    fill(175);
+    circle(this.position.x, this.position.y, this.mass * 16);
+  }
+
+  
+  checkEdges() {
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    } else if (this.position.x < 0) {
+      this.velocity.x *= -1;
+      this.position.x = 0;
     }
-}
 
-Mover.applyForce(wind);
-Mover.applyForce(gravity);
-Mover.update();
-
-applyFocer(force){
-    this.acc.add(force);
-}
-
-if(mouseIsPressed){
-    let wind = createVector(0.5, 0);
-    Mover.applyForce(wind);
-}
-
-update(){
-    this.vel.add(this.acc);
-    this.pos.add(this.vel);
-    //가속이 명확해지게
-    this.acc.mult(0);
+    if (this.position.y > height) {
+      this.velocity.y *= -1;
+      this.position.y = height;
+    }
+  }
 }
