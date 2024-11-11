@@ -15,7 +15,7 @@ function draw(){
         let wind = createVector(-0.1 , 1);
         leaf.applyForce(wind);
     }
-    
+
     leaf.checkEdges();
     leaf.update();
     leaf.show();
@@ -26,6 +26,7 @@ class Mover{
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
+        this.size = 20;
     }
     applyForce(force){
         this.acc.add(force);
@@ -58,5 +59,5 @@ show(){
     fill(100, 200, 100);
     noStroke();
     rectMode(CENTER);
-    rect(this.pos.x, this.pos.y, 20, 20); 
+    rect(this.pos.x, this.pos.y, this.size, this.size); 
 }
