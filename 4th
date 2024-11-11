@@ -10,5 +10,5 @@ Mover.applyForce(wind);
 Mover.applyForce(gravity);
 
 applyFocer(force){
-    this.acc = force;
+    this.acc.add(force);
 }
