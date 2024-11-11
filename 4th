@@ -1,41 +1,9 @@
-class Mover {
-  constructor() {
-   
+let moverA = new Mover();
+let moverB = new Mover();
+
+constructor(){
     this.mass = 1;
-    this.position = createVector(width / 2, 30);
-    this.velocity = createVector(0, 0);
-    this.acceleration = createVector(0, 0);
-  }
-  applyForce(force) {
-    let f = p5.Vector.div(force, this.mass);
-    this.acceleration.add(f);
-  }
-
-  update() {
-    this.velocity.add(this.acceleration);
-    this.position.add(this.velocity);
-    this.acceleration.mult(0);
-  }
-
-  show() {
-    stroke(0);
-    fill(175);
-    circle(this.position.x, this.position.y, this.mass * 16);
-  }
-
-  
-  checkEdges() {
-    if (this.position.x > width) {
-      this.position.x = width;
-      this.velocity.x *= -1;
-    } else if (this.position.x < 0) {
-      this.velocity.x *= -1;
-      this.position.x = 0;
-    }
-
-    if (this.position.y > height) {
-      this.velocity.y *= -1;
-      this.position.y = height;
-    }
-  }
+    this.pos = createVector(width / 2, 30);
+    this.vel = createVector(0, 0);
+    this.acc = createVector(0, 0);
 }
