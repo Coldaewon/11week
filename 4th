@@ -1,9 +1,9 @@
 let moverA = new Mover();
 let moverB = new Mover();
 
-constructor(){
-    this.mass = 1;
-    this.pos = createVector(width / 2, 30);
+constructor(x, y, mass){
+    this.mass = mass;
+    this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
 }
