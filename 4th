@@ -53,12 +53,12 @@ class Mover{
             this.vel.y *= -1;
         }
     }
-}
-
-show(){
+    show(){
     fill(100, 200, 100);
     noStroke();
     rectMode(CENTER);
     rect(this.pos.x, this.pos.y, this.size, this.size); 
 }
-// 오류가 뜸
+}
+
+
