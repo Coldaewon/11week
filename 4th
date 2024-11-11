@@ -61,3 +61,4 @@ show(){
     rectMode(CENTER);
     rect(this.pos.x, this.pos.y, this.size, this.size); 
 }
+// 오류가 뜸
